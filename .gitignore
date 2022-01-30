@@ -4,6 +4,9 @@ node_modules/
 # ignore ALL in temp folder
 temp/
 
+# ignore ALL in uploads folder
+uploads/
+
 # ignore ALL in tmp_uploads folder
 tmp_uploads/
 
