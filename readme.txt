@@ -1,109 +1,88 @@
-// https://colorlib.com/wp/npm-packages-node-js/
-// https://www.edureka.co/blog/node-js-npm-tutorial/
-// https://www.edureka.co/blog/rest-api-with-node-js/
-// https://medium.com/@rahulguptalive/create-crud-apis-in-nodejs-express-and-mysql-abda4dfc2d6
-// https://medium.com/@rahulguptalive/how-to-build-simple-restful-crud-api-with-nodejs-expressjs-and-mongodb-2d25a0e27937
-// https://dev.to/petereysermans/hosting-a-node-js-application-on-windows-with-iis-as-reverse-proxy-397b
-// https://www.datree.io/resources/node-js-frameworks-packages
-//
-// dummy data generator
-https://mockaroo.com/
+https://nodejs.org/en/
+https://nodejs.dev/learn
+https://nodejs.dev/learn/the-package-json-guide
+https://code.visualstudio.com/docs/nodejs/nodejs-tutorial
 
-// The code formatting is available in Visual Studio Code through the following shortcuts:
 
-On Windows  : Shift + Alt + F
-On Mac      : Shift + Option + F
-On Linux    : Ctrl + Shift + I
+// remove modules folders including subfolder. add few lines inside package.json:
+rmdir /s /q node_modules
 
-https://cloudinary.com/
-Cloud name: tahmilur
-API Key: 752646436438946
-API Secret:	6BZzjT2DNTh1RuVrY7-mcc5sSgI
-API Environment variable:	CLOUDINARY_URL=cloudinary://752646436438946:6BZzjT2DNTh1RuVrY7-mcc5sSgI@tahmilur
-// --------------------------------Useful packages-----------------------------------------------
-
-run application:
-
-"start": "node ./bin/www", -- node index.js
-"start": "nodemon index"   --npm start
-
-node -v
-npm -v
-npm init
-npm install express --save
-npm install express-validator
-npm install body-parser --save
-npm install mysql --save
-npm install mongodb --save
-npm install pug --save
-npm install --save-dev nodemon
-npm install cloudinary
-npm i async
-npm install socket.io
-npm install passport
-npm install restify
-npm install nodemon -g
-
-npm install --save express express-session body-parser
-npm install --save express pdfkit cloudinary body-parser
-// -------------------------------------------------------------------------------------------
-
-npm install -g express express-fileupload express-session express-validator express-zip 
-npm install -g axios body-parser cookie-parser form-data formidable 
-npm install -g request mv node-fetch nodemailer pdfkit 
-npm install -g mysql sqlite3 mongoose mongodb redis 
-
-// Step to do
-// https://auth0.com/blog/create-a-simple-and-stylish-node-express-app/#Create-More-Views-with-Pug-and-Express
-// https://blog.bitsrc.io/how-to-build-a-node-application-using-a-pug-template-7319ab1bba69
-
-mkdir newProject
-cd newProject
-
-npm init
-npm install nodejs express
-npm install nodemon
-npm install pug
-
-// filename: app.js
-const express = require('express');
-const app = express();
-app.listen(3000, () => console.log(“Listening on port 3000”));
-
-// filename:  package.json
-scripts{
-    "app" : "nodemon app.js"
+"scripts": {
+  ...
+  "clean": "rmdir /s /q node_modules",
+  "reinstall": "npm run clean && npm install",
+  "rebuild": "npm run clean && npm install && rmdir /s /q dist && npm run build --prod",
+  ...
 }
 
+// npm package manager
+-----------------------------------------------------------------------------------------------------------------------
+a. node --version                               -> version of the nodejs
+b. npm --version                                -> version of the nodejs package manager
+c. npx <packagename>                            -> find the package location
 
-// run the server
-npm run app
+a. node <filename>                              -> run the application
+b. npm run <task-name>                          -> run the application
 
-// filename:  package.json
-scripts{
-    "start" : "nodemon app.js"
-}
+0. npm root -g                                  -> global package location in your machine
+0. npm list                                     -> all installed local npm packages
+0. npm list -g                                  -> all installed global npm packages
+0. npm list --depth=0                           -> display only top-level packages
+0. npm list minimist                            -> dependencies of packages you installed
+0. npm list <package-name>                      -> get the information of a specific package
 
-// run the server : omit <run> command in the command
-npm start
+0. npm view <package-name> version             	-> get the version of a specific package
+0. npm view <package-name> versions             -> view versions of a package available
 
-// views folder : index.pug
-Doctype html
-  html
-     head
-        meta charset UTF-8
-        title Exploring the Pug template
-     body
-        h1#myHeading This is a pug template
-        p.firstParagraph I love this template!!!
+0. npm outdated                                 -> To discover new releases of the packages
+0. npm update                                   -> Updating packages
+0. npm install -g npm-check-updates             -> To update to a new major version all the packages, install globally, then run
+   ncu -u
 
-// update filename: app.js
-const express = require('express');
-const app = express();
+1. npm install                                  -> Installing all dependencies in node_modules folder
+1. npm install <package>@<version>              -> install specific version
+2. npm install <package-name>                   -> Installing a single package in node_modules folder
+3. npm install -g <package-name>                -> Installing a single package in global module folder
+4. npm install <package-name> --save            -> installs and adds the entry to the package.json file dependencies
+5. npm install <package-name> --save-dev        -> installs and adds the entry to the package.json file devDependencies
 
-app.set('view engine', 'pug');
-app.set('views', './src.views');
-app.get('/', (req,res) => {
-    res.render(index);
-})
-app.listen(3000, () => console.log(“Listening on port 3000”));
+0. npm uninstall <package-name>                 -> unstall package. use flag: -S/--save , -D/----save-dev, -g  : remove from file and globally
+0. npm uninstall -S <package-name>		-> -S / --save
+0. npm uninstall -D <package-name>		-> -D / --save-dev
+0. npm uninstall -g <package-name> 		-> -g / --global
+
+6. npm update                                   -> Updating packages
+7. npm update <package-name>                    -> single package to update
+8. npm run <task-name>                          -> Running Tasks
+
+    package.json
+    {
+        "scripts": {
+            "start-dev": "node lib/server-development",
+            "start": "node lib/server-production"
+        },
+    }
+
+1. create a siple nodejs application
+Let's get started by creating the simplest Node.js application, "Hello World".
+--------------------------------------------------------------------------------
+mkdir hello
+cd hello
+code .
+
+filename: app.js
+--------------------------------------------------------------------------------
+var msg = 'Hello World';
+console.log(msg);
+
+Running Hello World
+--------------------------------------------------------------------------------
+node app.js
+
+2. An Express application
+
+a) npm install -g express-generator
+b) express myExpressApp --view pug
+c) cd myExpressApp
+d) npm install
+e) npm start
