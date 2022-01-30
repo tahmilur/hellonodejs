@@ -1,0 +1,11 @@
+# ignore ALL in node_modules folder
+node_modules/
+
+# ignore ALL in temp folder
+temp/
+
+# ignore ALL in tmp_uploads folder
+tmp_uploads/
+
+# ignore ALL .log files
+*.log
