@@ -1,0 +1,64 @@
+//- form examples
+//- login form
+extends layout
+
+block layout-content
+    hr
+    div.container(style="width:800px;")
+        h2 Inline form
+        form(class="form-inline" action="/register/new?id=23456&flag=true" method="post" encType="multipart/form-data")
+            div.form-group
+                label(for="email")
+                    span Email:&nbsp;
+                input(type="email" class="form-control" id="email" placeholder="Enter email" name="email" value=email)
+            div.form-group
+                label(for="pwd") 
+                    span &nbsp;Password:&nbsp;
+                input(type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd")
+            div.checkbox
+                label
+                    span &nbsp;
+                    input(type="checkbox" name="remember" value="1" checked=(remember ? "checked" : undefined))
+                    span &nbsp;Remember me&nbsp;
+            hr
+            button(type="submit" class="btn btn-primary") Submit
+    hr
+    div.container(style="width:800px;")
+        h2 Vertical (basic) form
+        form(action="/register")
+            div(class="form-group")
+                label(for="email") Email:
+                input(type="email" class="form-control" id="email" placeholder="Enter email" name="email")
+            div(class="form-group")
+                label(for="pwd") Password:
+                input(type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd")
+            div.checkbox
+                label
+                    input(type="checkbox" name="remember") 
+                    span Remember me
+            button(type="submit" class="btn btn-primary") Submit
+    hr
+
+    div.container(style="width:800px;")
+        h2 Horizontal form
+        form(class="form-horizontal" action="/register")
+            div(class="form-group")
+                label(class="control-label col-sm-2" for="email") Email:
+                div(class="col-sm-10")
+                    input(type="email" class="form-control" id="email" placeholder="Enter email" name="email")
+
+            div(class="form-group")
+                label(class="control-label col-sm-2" for="pwd") Password:
+                div(class="col-sm-10")       
+                    input(type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd")
+
+            div(class="form-group")        
+                div(class="col-sm-offset-2 col-sm-10")
+                    div.checkbox
+                        label
+                            input(type="checkbox" name="remember")
+                            span Remember me
+
+            div(class="form-group")        
+                div(class="col-sm-offset-2 col-sm-10")
+                    button(type="submit" class="btn btn-primary") Submit              

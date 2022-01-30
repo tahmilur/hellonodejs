@@ -1,0 +1,78 @@
+//- register form
+extends layout
+
+block layout-content
+        hr
+        div.container(style="width:800px;")
+            h1.display-4.m-b-2 Sign Up
+
+            // register form
+            form(method='POST' action='/register')
+            div.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', placeholder='first and last' name='name')
+            div.form-group
+                label(for='email') Email:
+                input#email.form-control(type='email', placeholder='name@email.com' name='email')
+            div.form-group
+                label(for='favoriteBook') Favorite Book:
+                input#favoriteBook.form-control(type='text', placeholder='title of book' name='favoriteBook')
+            div.form-group
+                label(for='pw') Password:
+                input#pw.form-control(type='password' name='password')
+            div.form-group
+                label(for='pw2') Confirm Password:
+                input#pw2.form-control(type='password' name='confirmPassword')
+            div.form-group
+                label(for='pw2') Example select:
+                select#txtSelect.form-control
+                    option 1
+                    option 2
+                    option 3
+                    option 4
+                    option 5
+            div.form-group
+                label(for='pw2') Example multi-select:
+                select#txtMSelect.form-control(multiple="multiple")
+                    option 1
+                    option 2
+                    option 3
+                    option 4
+                    option 5         
+            div.form-group
+                label(for='pw2') Photo:
+                input#photo.form-control(type='file' name='photo')
+            div.form-group
+                label(for='pw2') Experiences:
+                input#photo.form-control(type='file' name='exp' multiple)                
+            div.form-group
+                label(for='pw2') Dccuments:
+                input#photo.form-control(type='file' name='docs' multiple)
+            div.form-group
+                label(for='pw2') Checkbox:
+                div.checkbox
+                    label
+                        input(type='checkbox' value='Option 1' checked)
+                        span Option 1&nbsp;
+                    label
+                        input(type='checkbox' value='Option 2')
+                        span Option 2&nbsp;
+                    label
+                        input(type='checkbox' value='Option 3')
+                        span Option 3&nbsp; 
+            div.form-group
+                label(for='pw2') Radio:
+                div.radio
+                    label
+                        input(type='radio' name="optradio" value='Option 1' checked)
+                        span Option 1&nbsp;
+                    label
+                        input(type='radio' name="optradio" value='Option 2')
+                        span Option 2&nbsp;
+                    label
+                        input(type='radio' name="optradio" value='Option 3')
+                        span Option 3&nbsp;                                                                                                      
+            div.form-group
+                label(for='pw2') Remarks:
+                textarea#txtRemarks.form-control(rows="3")
+            button.btn.btn-primary(type='submit') Sign up

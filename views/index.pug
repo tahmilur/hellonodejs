@@ -1,0 +1,53 @@
+extends layout
+
+block layout-content
+  div.View.WelcomeView
+    h1.Banner WHAT A BYTE
+    div.Message
+      div.Title
+        h3 Making the Best
+        h5 Food For Devs
+      span.Details Access the WHATABYTE Team Portal
+      hr
+      a(href='/admin') visit admin
+      span &nbsp; >> &nbsp;
+      a(href='/admin') login
+    div      
+      div.divtable
+        table.table.table-bordered.table-hover.tablebg.hidden
+          caption Here is the list of Users
+          thead.thead-dark
+            tr
+              th= 'ID'
+              th= 'Name'
+              th= 'Email'
+              th= 'Phone'
+            for user in userList
+              tr
+                td= user._id
+                td
+                  a(href='/person/'+user._id) #{user.first_name}
+                td= user.email
+                td= user.phone
+
+    div.NavButtons
+      a(href="/user")
+        div.NavButton Just dive in!
+
+    hr
+    span.Details Access the WHATABYTE Team Portal
+    br
+    div(id="googleMap" style="width:50%;height:600px;border:1px solid red;")
+
+    script(type='text/javascript').
+      function myMap() {
+        var mapProp= {
+          center:new google.maps.LatLng(51.508742,-0.120850),
+          zoom:5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gt2LHISS6Pp1QkcEnedjmk-Repr5rAc&callback=myMap' type='text/javascript')
+
+

@@ -1,0 +1,123 @@
+extends layout
+
+block layout-content
+    include includes/sidemenu.pug
+    div(id="main")
+        div.container
+            div(class="panel panel-primary")
+                div(class="panel-body" style="background-color:#FCFCCC;pading:10px;")
+                    span(style="font-size:20px;cursor:pointer" onclick="openNav()") &#9776; open
+                    h4(style="margin: 0 auto;text-align:center;color:blue;") 
+                        |Welcome to Nodejs example
+                        br
+                        |User registration
+
+            div(class="progress")
+                div(class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%") 80%
+            
+            //- #{JSON.stringify(data)} 
+
+            hr
+            form.form-horizontal(role='form' action="/register/new?id=23456&flag=true" method="post" encType="multipart/form-data")
+                .form-group
+                .col-md-12
+                    textarea#users.form-control(placeholder='Content' name='content' rows='8')
+                        //- #{JSON.stringify(userList)} 
+                        #{JSON.stringify(countries)} 
+                .form-group
+                label.col-md-2.control-label(for='firstName') Name
+                .col-md-4
+                    input#firstname.form-control(type='text' name='firstname' value=data?data.firstname:'' placeholder='First Name')
+                .col-md-4
+                    input#lastname.form-control(type='text' name='lastname' value=data?data.lastname:'' placeholder='Last Name')                
+                .form-group
+                label.col-md-2.control-label(for='email') Email
+                .col-md-4
+                    input#email.form-control(type='text' name='email' value=data?data.email:'' placeholder='Enter email')
+                .col-md-4
+                    input#pwd.form-control(type='text' name='pwd' value=data?data.pwd:'' placeholder='Enter password')                    
+                .form-group
+                label.col-md-2.control-label(for='phone') Phone
+                .col-md-8
+                    input#phone.form-control(type='text' name='phone' value=data?data.phone:'' placeholder='Phone')
+                .form-group
+                label.col-md-2.control-label(for='website') Website
+                .col-md-8
+                    input#website.form-control(type='text' name='website' value=data?data.website:'' placeholder='Website')
+                .form-group
+                label.col-md-2.control-label(for='address') Address
+                .col-md-4
+                    input#address.form-control(type='text' name='address' value=data?data.address:'' placeholder='Address')
+                .col-md-2
+                    input#city.form-control(type='text' name='city' value=data?data.city:'' placeholder='city')   
+                .col-md-2
+                    input#postcode.form-control(type='text' name='postcode' value=data?data.postcode:'' placeholder='postcode')                                     
+                .form-group
+                label.col-md-2.control-label(for='country') Country
+                .col-md-4
+                    select#country.form-control
+                        each country, index in countries
+                            option(value=index selected=(index === (data?data.country:''))) #{index} : #{country.name}                 
+                    br
+                    select#user.form-control
+                        each user, index in userList
+                            option(value=user._id) #{index} : #{user.first_name} #{user.last_name} 
+                    div.hidden
+                        ul
+                        each user, index in userList
+                            li= index + ': ' + user.first_name + ' ' + user.last_name
+
+                .col-md-4                    
+                    div.dropdown
+                        button(class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown") Language &nbsp;
+                            span.caret
+                        ul.dropdown-menu
+                            li
+                                a(href="#") HTML
+                            li
+                                a(href="#") CSS
+                            li
+                                a(href="#") Javascript 
+                .form-group
+                label.col-md-2.control-label(for='content') Files
+                .col-md-2
+                    input#photo.form-control(type='file' name='photo')
+                .col-md-2
+                    input#my_profile_pic.form-control(type='file' name='my_profile_pic')
+                .col-md-2
+                    input#my_pet.form-control(type='file' name='my_pet')
+                .col-md-2     
+                    input#my_cover_photo.form-control(type='file' name='my_cover_photo' multiple)                                                                                      
+                .form-group
+                label.col-md-2.control-label(for='content') Content
+                .col-md-8
+                    textarea#content.form-control(placeholder='Content' name='content' rows='5')
+                        if data != undefined && data.content != null
+                            | #{data.content}                   
+                .form-group
+                .col-md-offset-2.col-md-3                    
+                    textarea(rows=3).form-control
+                        | hoge
+                        | fuga
+                        | piyo
+                .col-md-3
+                    textarea(rows=3).form-control.
+                            hoge
+                            fuga
+                            piyo    
+                .col-md-2
+                    - var text = "hoge\npiyo\nfuga"
+                    textarea(rows=3).form-control= text  
+                                                                                                     
+                .form-group
+                .col-md-offset-2.col-md-8
+                    input(type="checkbox" name="remember" value="1" checked=(value=data?(data.remember? "checked" : undefined):undefined))
+                    span &nbsp; Remember me  
+                .form-group
+                .col-md-offset-2.col-md-8
+                    p.description(style='color:blue;').
+                        you must accept terms 
+                        and conditions                        
+                .form-group
+                .col-md-offset-2.col-md-8
+                    button.btn.btn-primary(type='submit') Sign in

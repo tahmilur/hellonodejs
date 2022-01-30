@@ -1,0 +1,148 @@
+//- https://riptutorial.com/pug
+- var title = "On Dogs: Man's Best Friend";
+- var author = "enlore";
+- var theGreat = "<span>escape!</span>";
+- var msg = "not my inside voice";
+- var user = {description: 'foo bar baz'}
+- var authorised = false
+- var weekdays = weekdays; //- [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+- var months = months; //- {1: 'one', 2: 'two', 3: 'three'};
+- var values = {1: 'one', 2: 'two', 3: 'three'};
+- var n = 0;
+- var page = 60;
+doctype html
+html
+  head
+    //- title= title
+    meta(charset="utf-8")
+    link(rel="shortcut icon", href="/favicon.ico")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="theme-color", content="#000000")
+    title #{title} | WHATABYTE
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel="stylesheet" href="/style.css")   
+
+    script.
+        window.onload = function () {
+            function setUsername(username) {
+                return username;
+            }
+
+            var user = !{JSON.stringify(userList)};
+            document.getElementById("welcome-user").innerHTML = setUsername(user[0].first_name);
+        };     
+  body
+    div.container
+      h1= message
+      div(id="welcome-user")
+      span !{myTag}
+      hr
+      h5= title
+      pre 
+       | Written with love by #{author}
+       | This will be safe: #{theGreat}
+       | This is #{msg.toUpperCase()}
+      if page => 52
+          h2 Lots of numbers!
+      else if page > 26 && page < 52
+          h2 A few numbers
+      else
+          h2 Not a lot of numbers
+      #user
+        if user.description
+          h5.green Description
+          p.description= user.description
+        else if authorised
+          h5.blue Description
+          p.description
+            | User has no description,
+            | why not add one...
+        else
+          h2.red Description
+          p.description User has no description      
+      hr
+      div.container
+        div.row
+          div.col-sm-4
+            ul
+              each val in weekdays
+                li= val
+              else
+                li There are no weekdays            
+          div.col-sm-4
+            ul#test
+              each val, key in months
+                //- li= key + ': ' + val
+                li(value=val.abbreviation)= val.name            
+          div.col-sm-4
+            ul
+              each val in values.length ? values : ['There are no values']
+                li= val
+            ul
+              while n < 4
+                li= n++            
+        div
+      div
+
+      hr
+      div(style="height:450px;overflow:scroll;")    
+          table.table.table-bordered.table-hover.table-responsive.tablebg
+            caption User list
+            thead.thead-dark
+              tr
+                th(style="width:15%;white-space:nowrap;")= 'ID'
+                th= 'Name'
+                th= 'Email'
+                th= 'Phone'
+              for user in userList
+                tr
+                  td= user._id
+                  td
+                    a(href='person/'+user._id) #{user.first_name}
+                  td= user.email
+                  td= user.phone
+            tfoot
+              tr
+                td(colspan="4" style="text-align:right;padding:5px;font-weight:lighter;font-size:9px;")= '© 2020 Copyright: ABC data'
+      hr
+      
+      div(style="width:50%;border-radius:5px;border: 1px solid #73AD21;padding:8px;margin:0 auto;box-shadow: 5px 5px 2px grey;")
+        h4(style="border-bottom: 1px solid #0000FF;padding:3px;color:green;")= 'Login'
+        form(action="/")
+          div.form-group
+            label(for="email")= 'Email:'
+            input(type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="test@yahoo.com")
+
+          div.form-group
+            label(for="pwd")= 'Password:'
+            input( type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd")
+
+          div.checkbox
+            label
+              input(type="checkbox" name="remember")
+              span Remember me
+          button(type="submit" class="btn btn-primary btn-sm" style="margin-right:5px;") Submit 
+          button(type="button" class="btn btn-primary btn-sm" onclick='alert("'+ user.description +'")' ) Press Me     
+      br
+      div.card
+        div.header
+          h1= '1'
+        div.caption
+          p= 'January 1, 2016'
+      div.card
+        div.header
+          h1= '2'
+        div.caption
+          p= 'January 2, 2016'         
+      hr
+      each photo in gallaryPhotos
+        div.polaroid
+          img(src=photo.url alt="Norway" style="width:100%")
+          div.caption
+            p= photo.name
+
+      div(style="height:50px;")
+      div.footer
+         p © 2020 Copyright: 
+          a(href="http://www.tahmilur.com/") visit: tahmilur.com

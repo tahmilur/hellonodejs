@@ -1,0 +1,23 @@
+extends layout
+
+block layout-content
+  div.View.UserView
+    h1.Banner Howdy, #{userProfile.first_name}!
+    div.Message
+      div.Title
+        h3.text-success #{userProfile.first_name} #{title}
+      pre.Details=JSON.stringify(userProfile, null, 2)
+      //- pre.Details=JSON.stringify(employeeList, null, 2)
+      //- pre.Details=JSON.stringify(people, null, 2)
+      
+      //- each person in people
+        div.person
+          div.person-image(style=`background: url('/images/${person.imgSrc}') top center no-repeat; background-size: cover;`)
+          h2.person-name
+            | #{person.firstname} #{person.lastname}
+          a(href=`/profile?id=${person.id}`) 
+            | View Profile
+      
+    div.NavButtons
+      a(href="/logout")
+        div.NavButton Log out

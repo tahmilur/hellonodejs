@@ -1,0 +1,172 @@
+//- my account
+extends layout
+
+block layout-content
+    style.
+        /* Style the input field */
+        #myInput {
+            padding: 20px;
+            margin-top: -6px;
+            border: 0;
+            border-radius: 0;
+            background: #f1f1f1;
+        }
+        .btn {
+            margin: 5px 5px 5px 0;
+        }
+    hr
+    div.container(style="width:800px;")
+        div.panel.panel-success
+            div.panel-heading
+                 h5 Account information
+            div.panel-body            
+                form
+                    .form-row
+                        .form-group.col-md-6
+                            label(for='txtFirstName') First name
+                            input#txtFirstName.form-control(type='text' placeholder='First name')
+                        .form-group.col-md-6
+                            label(for='txtLastName') Last name
+                            input#txtLastName.form-control(type='text' placeholder='Last name')        
+                    .form-row
+                        .form-group.col-md-6
+                            label(for='inputEmail4') Email
+                            input#inputEmail4.form-control(type='email' placeholder='Email')
+                        .form-group.col-md-6
+                            label(for='inputPassword4') Password
+                            input#inputPassword4.form-control(type='password' placeholder='Password')
+                    .form-group
+                        .form-group.col-md-12
+                            label(for='inputAddress') Address
+                            input#inputAddress.form-control(type='text' placeholder='1234 Main St')
+                    .form-group
+                        .form-group.col-md-12
+                            label(for='inputAddress2') Address 2
+                            input#inputAddress2.form-control(type='text' placeholder='Apartment, studio, or floor')
+                    .form-row
+                        .form-group.col-md-6
+                            label(for='inputCity') City
+                            input#inputCity.form-control(type='text')
+                        .form-group.col-md-4
+                            label(for='inputState') State
+                            select#inputState.form-control
+                                option(selected='') Choose...
+                                option ...
+                        .form-group.col-md-2
+                            label(for='inputZip') Zip
+                            input#inputZip.form-control(type='text')
+                    .form-group
+                        .form-group.col-md-12
+                            .form-check
+                                input#gridCheck.form-check-input(type='checkbox')
+                                label.form-check-label(for='gridCheck')
+                                    | &nbsp; Check me out
+                    .form-group
+                        .form-group.col-md-12   
+                            button.btn.btn-success(type='submit') Sign in
+                            button.btn.btn-primary(type='button')
+                                | Primary 
+                                span.badge 7    
+                            hr
+                            button.btn(type='button') Basic
+                            button.btn.btn-default(type='button') Default
+                            button.btn.btn-primary(type='button') Primary
+                            button.btn.btn-success(type='button') Success
+                            button.btn.btn-info(type='button') Info
+                            button.btn.btn-warning(type='button') Warning
+                            button.btn.btn-danger(type='button') Danger
+                            button.btn.btn-link(type='button') Link                            
+                            h2 Badges
+                            a(href='#')
+                                | News 
+                                span.badge 5
+                            br
+                            a(href='#')
+                                | Comments 
+                                span.badge 10
+                            br
+                            a(href='#')
+                                | Updates 
+                                span.badge 2
+
+                            hr
+                            .dropdown
+                                button.btn.btn-primary.dropdown-toggle(type='button' data-toggle='dropdown')
+                                    | Dropdown Example&nbsp;
+                                    span.caret
+                                ul.dropdown-menu
+                                    input#myInput.form-control(type='text' placeholder='Search..')
+                                    li
+                                        a(href='#') HTML
+                                    li
+                                        a(href='#') CSS
+                                    li
+                                        a(href='#') JavaScript
+                                    li
+                                        a(href='#') jQuery
+                                    li
+                                        a(href='#') Bootstrap
+                                    li
+                                        a(href='#') Angular                            
+    
+    hr
+    .container(style="width:800px;")
+        h2 Modal Example
+        // Trigger the modal with a button
+        button.btn.btn-info.btn-xs(type='button' data-toggle='modal' data-target='#myModal') Open Modal
+        // Modal
+        #myModal.modal.fade(role='dialog')
+            .modal-dialog.modal-sm
+            // Modal content
+            .modal-content
+                .modal-header
+                    button.close(type='button' data-dismiss='modal') &times;
+                    h4.modal-title Modal Header
+                .modal-body
+                    p Some text in the modal.
+                .modal-footer
+                    button.btn.btn-default(type='button' data-dismiss='modal') Close
+
+    hr
+    .container(style="width:800px;")
+        h2 Carousel Example
+        #myCarousel.carousel.slide(data-ride='carousel')
+            // Indicators
+            ol.carousel-indicators
+                li.active(data-target='#myCarousel' data-slide-to='0')
+                li(data-target='#myCarousel' data-slide-to='1')
+                li(data-target='#myCarousel' data-slide-to='2')
+            // Wrapper for slides
+            .carousel-inner
+                .item.active
+                    img(src='public/images/la.jpg' alt='Los Angeles' style='width:100%;')
+                    .carousel-caption
+                        h3 Los Angeles
+                        p LA is always so much fun!
+                .item
+                    img(src='public/images/chicago.jpg' alt='Chicago' style='width:100%;')
+                    .carousel-caption
+                        h3 Chicago
+                        p Thank you, Chicago!
+                .item
+                    img(src='public/images/ny.jpg' alt='New York' style='width:100%;')
+                    .carousel-caption
+                        h3 New York
+                        p We love the Big Apple!
+            // Left and right controls
+            a.left.carousel-control(href='#myCarousel' data-slide='prev')
+                span.glyphicon.glyphicon-chevron-left
+                span.sr-only Previous
+            a.right.carousel-control(href='#myCarousel' data-slide='next')
+                span.glyphicon.glyphicon-chevron-right
+                span.sr-only Next
+    hr
+    script.
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".dropdown-menu li").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });

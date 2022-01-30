@@ -1,0 +1,6 @@
+Server is running at port 3000
+Connected to MySQL Server!
+The data from employees table are: 
+ [{"id":1,"first_name":"John","last_name":"Doe","email":"johndoe@gmail.com","phone":"1234567890","organization":"BR Softech Pvt Ltd","designation":"Full Stack Developer","salary":500,"status":1,"is_deleted":0,"created_at":"2019-11-19T02:30:30.000Z","updated_at":"2020-10-16T14:32:46.000Z"}]
+The data from employees table are: 
+ [{"id":1,"first_name":"John","last_name":"Doe","email":"johndoe@gmail.com","phone":"1234567890","organization":"BR Softech Pvt Ltd","designation":"Full Stack Developer","salary":500,"status":1,"is_deleted":0,"created_at":"2019-11-19T02:30:30.000Z","updated_at":"2020-10-16T14:32:46.000Z"}]
